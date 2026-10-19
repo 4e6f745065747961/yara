@@ -1,2 +1,2 @@
 # yara
-some yara rules
+Yara rules for malware that I find I guess
