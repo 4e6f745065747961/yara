@@ -35,7 +35,7 @@ rule Optimizer11_Loader_EXTRACTED_Stage1
     how = "unzip -p suspect.jar com/example/loader/LoaderMod.class and scan result"
 
   strings:
-    // C2 stored reversed; decodes to hxxps://<c2>/api/download/optimizer11.jar (see report)
+    // C2 stored reversed; decodes to https://<c2>/api/download/optimizer11.jar
     $c2_reversed = "raj.11rezimitpo/daolnwod/ipa/ur.erawaggin//:sptth" ascii
     $c2_jar = "optimizer11.jar" ascii
     $c2_api = "/api/download/" ascii
