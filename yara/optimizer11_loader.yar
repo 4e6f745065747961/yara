@@ -1,22 +1,3 @@
-/*
-  YARA rules for trojanized TierTagger JAR delivering Optimizer11 stage-2
-  Sample: "krypton client-2.4.0+mc1.21.11 (1) (ni--aware).jar" (184328 bytes)
-  SHA256: 88B870964CC6230D12BD9DA6EE91B9692ACD8C349C657CAACF635361D6592BF3
-  Static-only analysis, no execution. C2 was dead at analysis time.
-
-  IMPORTANT - JAR compression note:
-  Java JARs are ZIPs with DEFLATE-compressed entries. Raw-JAR scans only see
-  ZIP central-directory filenames, NOT decompressed class strings. Hence:
-   - Rule 1 (CONTAINER) targets raw .jar files via entry NAMES only.
-   - Rule 2 (EXTRACTED) targets extracted/decompressed LoaderMod.class,
-     javap output, or decompiled .java (run after unzip -p / jd-cli).
-   - Rule 3 (MEMORY) is a loose in-memory / log scanner for stage-2 refs.
-
-  Usage:
-    yara Optimizer11_Loader_CONTAINER.yar mods/*.jar
-    unzip -p suspect.jar com/example/loader/LoaderMod.class | yara Optimizer11_Loader_EXTRACTED.yar -
-*/
-
 rule Optimizer11_Loader_CONTAINER_JAR
 {
   meta:
@@ -54,7 +35,7 @@ rule Optimizer11_Loader_EXTRACTED_Stage1
     how = "unzip -p suspect.jar com/example/loader/LoaderMod.class and scan result"
 
   strings:
-    // C2 stored reversed; decodes to hxxps://<c2>/api/download/optimizer11.jar (see report)
+    // C2 stored reversed; decodes to https://<c2>/api/download/optimizer11.jar
     $c2_reversed = "raj.11rezimitpo/daolnwod/ipa/ur.erawaggin//:sptth" ascii
     $c2_jar = "optimizer11.jar" ascii
     $c2_api = "/api/download/" ascii
