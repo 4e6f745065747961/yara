@@ -1,19 +1,5 @@
 import "hash"
 
-/* MRT - Discord .infected collection coverage.
- * Every rule below was built from static analysis of files ending in
- * .infected under C:\MALWARE\Discord. Confidence is stated per rule:
- * CONFIRMED = credential theft / payload-download behavior observed in
- * code or strings; SUSPICIOUS = distinctive loader/C2/auth framework
- * that warrants review; hash-pinned = packed or otherwise opaque sample
- * with no static pivots (exact SHA256, zero false-positive risk, but no
- * behavior claim). Raw-JAR rules match ZIP entry names (visible without
- * decompression); content rules are for extracted classes / binaries /
- * memory, like the Donki behavior rule.
- */
-
-/* ---------------- CONFIRMED stealers / loaders ---------------- */
-
 rule Discord_DR4t_CookieStealer {
     meta:
         author = "static analysis - DR4t.jar.infected"
@@ -60,8 +46,6 @@ rule Discord_Groov_PayloadDownloader {
             ($host and $auth)
         )
 }
-
-/* ---------------- SUSPICIOUS frameworks / C2 ---------------- */
 
 rule Discord_Anamvmnt_KeyBeacon {
     meta:
@@ -303,13 +287,6 @@ rule Discord_FrenchPacket_Cheat {
             (3 of ($p*))
         )
 }
-
-/* ---------------- hash-pinned uncharacterized ----------------
- * Exact size+SHA256 pins for packed/opaque Discord samples with no
- * static pivots. Zero false-positive risk; behavior intentionally
- * unclaimed - re-analyze after unpacking. Uses the YARA hash module
- * (imported at the top of this file).
- */
 
 rule Discord_Uncharacterized_PremiumDLL {
     meta:
