@@ -4,13 +4,11 @@
     -------------------------------------------------------------------
     Samples analysed:
       Loader:
-        File:    samples/sample-funrat.jar (original: sample "funrat".jar)
         SHA-256: d34fe879a58a317253f2b3b38d023d1b0df22bad67144d4d40e7cb49cd80146b
         SHA-1:   62c0db980d94433921ef6d6012b3d194ed636066
         MD5:     2e6b17168249dbcfd9fcd7ee53d7d5fd
         Size:    60539 bytes
       Stage 1:
-        File:    samples/stage-funrat.jar (core.core)
         SHA-256: eb80cf584e05fdfc63949870acf8b0ad8972b1ed5343583c845a98299b8167f9
         SHA-1:   49e5fd6eff74573c5fba66f2712cf048231882e2
         MD5:     c730d8846abbc68fd95bff79e7c54131
@@ -19,11 +17,9 @@
                  147daae7ee8487c698ce5eaa3b4e6bda28cee2e459d085729971b31f747d83ed
 
       Stage 3:
-        File:    JavaInt.jar
         SHA-256: bf2c9723acf2d4ea5971169368ed384e57399177b0f59ed627744df7b07dd822
         Size:    23229672 bytes
       Stage 4:
-        File:    dis.jar
         SHA-256: 9bcb73a6c5277e1c9be247b29e39f9f41d929235fa09f61064f5712ec9e832bc
         Size:    5773961 bytes
 
@@ -50,8 +46,7 @@
         names, extracted-class coverage uses method names, and the decoded rule
         targets memory/unpacked files.
       * Stage 4 leaves most strings in clear. Its class/decoded rules can also
-        match analysis notes and README text, so exclude analysis directories
-        from production scans.
+        match the README text, so exclude the report from production scans.
 
     Author: Krotten
     Date:   2026-10-23
